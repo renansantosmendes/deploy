@@ -8,6 +8,7 @@ on:
   push:
     branches:
     - main
+    - source_code
   pull_request:
     branches:
     - main
