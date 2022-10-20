@@ -7,3 +7,8 @@ app = FastAPI()
 @app.get("/")
 async def read_root():
     return {"Hello": "World new version"}
+
+
+@app.get("/api")
+async def read_root():
+    return {"key": "value"}
