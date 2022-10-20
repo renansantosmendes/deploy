@@ -18,9 +18,11 @@ class Data(BaseModel):
 
 def load_models():
     model = pickle.load(open(os.path.join(os.getcwd(),
-                                          '\\models\\model.pkl', 'rb')))
+                                          'models',
+                                          'model.pkl'), 'rb'))
     scaler = pickle.load(open(os.path.join(os.getcwd(),
-                                           '\\models\\scaler.pkl', 'rb')))
+                                           'models',
+                                           'scaler.pkl'), 'rb'))
     return scaler, model
 
 
