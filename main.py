@@ -1,3 +1,4 @@
+import os
 import pickle
 import pytest
 import numpy as np
@@ -16,8 +17,10 @@ class Data(BaseModel):
 
 
 def load_models():
-    model = pickle.load(open('.\\models\\model.pkl', 'rb'))
-    scaler = pickle.load(open('.\\models\\scaler.pkl', 'rb'))
+    model = pickle.load(open(os.path.join(os.getcwd(),
+                                          '\\models\\model.pkl', 'rb')))
+    scaler = pickle.load(open(os.path.join(os.getcwd(),
+                                           '\\models\\scaler.pkl', 'rb')))
     return scaler, model
 
 
