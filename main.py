@@ -17,6 +17,12 @@ class Data(BaseModel):
 
 
 def load_models():
+    print('current path', os.getcwd())
+    try:
+        print(os.listdir(os.getcwd()))
+        print(os.path.join(os.getcwd(), 'model'))
+    except Exception as e:
+        print(e)
     model = pickle.load(open(os.path.join(os.getcwd(),
                                           'model',
                                           'model.pkl'), 'rb'))
