@@ -84,10 +84,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          
+
       - name: Download Models For Deploy
         run: |
           python download_models.py --run_id $MLFLOW_RUN_ID --tracking_uri $MLFLOW_TRACKING_URI --tracking_username $MLFLOW_TRACKING_USERNAME --tracking_password $MLFLOW_TRACKING_PASSWORD
+      - name: List Folder
+        run: ls
+
+      - name: List Folder 2
+        run: ls /model/
 
       - name: Deploy to Heroku
         run: |
