@@ -42,6 +42,8 @@ jobs:
 
   download_models:
       runs-on: ubuntu-latest
+      needs: [ci_pipeline]
+
       steps:
           - uses: actions/checkout@v1
             with:
@@ -57,16 +59,16 @@ jobs:
                 python -m pip install --upgrade pip
                 if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-          - name: Test
+          - name: Download Models From DAGsHub
             run: |
-              python python download_models.py --run_id $MLFLOW_RUN_ID --tracking_uri $MLFLOW_TRACKING_URI --tracking_username $MLFLOW_TRACKING_USERNAME --tracking_password $MLFLOW_TRACKING_PASSWORD
+              python download_models.py --run_id $MLFLOW_RUN_ID --tracking_uri $MLFLOW_TRACKING_URI --tracking_username $MLFLOW_TRACKING_USERNAME --tracking_password $MLFLOW_TRACKING_PASSWORD
 
 
 
   cd_pipeline:
 
       runs-on: ubuntu-latest
-      needs: [ci_pipeline]
+      needs: [download_models]
 
       steps:
 
