@@ -4,3 +4,4 @@ uvicorn
 requests
 scikit-learn==1.1.2
 numpy
+mlflow
