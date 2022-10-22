@@ -18,10 +18,9 @@ class Data(BaseModel):
 
 def load_models():
     model = pickle.load(open(os.path.join(os.getcwd(),
-                                          'models',
+                                          'model',
                                           'model.pkl'), 'rb'))
     scaler = pickle.load(open(os.path.join(os.getcwd(),
-                                           'models',
                                            'scaler.pkl'), 'rb'))
     return scaler, model
 
@@ -34,6 +33,9 @@ app = FastAPI()
 async def read_root():
     return {"Hello": "World"}
 
+@app.get("/api/version")
+async def read_root():
+    return {"version": "2"}
 
 @app.post("/api/predict")
 async def predict(data: Data) -> dict:
