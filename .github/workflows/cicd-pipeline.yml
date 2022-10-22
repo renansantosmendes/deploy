@@ -78,8 +78,11 @@ jobs:
       needs: [download_models]
 
       steps:
-
       - uses: actions/checkout@v2
+      - name: Download Models For Deploy
+        run: |
+          python download_models.py --run_id $MLFLOW_RUN_ID --tracking_uri $MLFLOW_TRACKING_URI --tracking_username $MLFLOW_TRACKING_USERNAME --tracking_password $MLFLOW_TRACKING_PASSWORD
+
       - name: Deploy to Heroku
         run: |
           git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
