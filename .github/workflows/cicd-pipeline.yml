@@ -36,6 +36,10 @@ jobs:
                 python -m pip install --upgrade pip
                 if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+          - name: Download Test Models From DAGsHub
+            run: |
+              python download_models.py --run_id $MLFLOW_RUN_ID --tracking_uri $MLFLOW_TRACKING_URI --tracking_username $MLFLOW_TRACKING_USERNAME --tracking_password $MLFLOW_TRACKING_PASSWORD
+
           - name: Test
             run: |
               python -m pytest -vv test.py
