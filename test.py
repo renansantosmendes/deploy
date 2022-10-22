@@ -17,11 +17,3 @@ def test_read_main():
 #     response = client.get("/api/predict")
 #     assert response.status_code == 200
 #     assert response.json() == {"key": "value"}
-
-
-def test_model_instance():
-    assert isinstance(model, RandomForestClassifier)
-
-
-def test_scaler_instance():
-    assert isinstance(scaler, StandardScaler)

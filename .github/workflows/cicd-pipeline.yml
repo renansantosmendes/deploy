@@ -63,6 +63,9 @@ jobs:
             run: |
               python download_models.py --run_id $MLFLOW_RUN_ID --tracking_uri $MLFLOW_TRACKING_URI --tracking_username $MLFLOW_TRACKING_USERNAME --tracking_password $MLFLOW_TRACKING_PASSWORD
 
+          - name: Test Models
+            run: |
+              python -m pytest -vv test_models.py
 
 
   cd_pipeline:
